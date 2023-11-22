@@ -25,5 +25,20 @@ function findPublishedPosts() {
     });
 }
 
+function findPostContent(string) {
+  prisma.post
+    .findMany({
+      where: {
+        content: {
+          contains: string,
+        },
+      },
+    })
+    .then((posts) => {
+      console.log(`I seguenti post contengono la stringa ${string}: `, posts);
+    });
+}
+
 findPost(7);
 findPublishedPosts();
+findPostContent("Contenuto");
