@@ -13,4 +13,17 @@ function findPost(id) {
     });
 }
 
+function findPublishedPosts() {
+  prisma.post
+    .findMany({
+      where: {
+        published: true,
+      },
+    })
+    .then((posts) => {
+      console.log("I seguenti post sono stati pubblicati: ", posts);
+    });
+}
+
 findPost(7);
+findPublishedPosts();
