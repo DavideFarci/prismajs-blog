@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const posts = require("../posts");
 
+// FUNZIONE PER POPOLARE IL DB
 // prisma.post
 //   .createMany({
 //     data: posts.map((post) => {
@@ -12,8 +13,7 @@ const posts = require("../posts");
 //     console.log(post);
 //   });
 
-// funzione creazione di un post
-
+// FUNZIONE DI CREAZIONE DI UN SINGOLO POST
 function createPost(title, image, content) {
   prisma.post
     .create({
