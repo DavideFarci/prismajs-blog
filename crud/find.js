@@ -5,7 +5,7 @@ function findPost(id) {
   prisma.post
     .findFirst({
       where: {
-        id: id,
+        id: +id,
       },
     })
     .then((post) => {
@@ -39,6 +39,22 @@ function findPostContent(string) {
     });
 }
 
-findPost(7);
-findPublishedPosts();
-findPostContent("Contenuto");
+const functionRequired = process.argv[2];
+
+switch (functionRequired) {
+  case "findPost":
+    const id = process.argv[3];
+    findPost(id);
+    break;
+  case "findPublishedPost":
+    findPublishedPosts();
+    break;
+  case "findPostContent":
+    const content = process.argv[3];
+    findPostContent(content);
+    break;
+}
+
+// findPost(7);
+// findPublishedPosts();
+// findPostContent("Contenuto");
